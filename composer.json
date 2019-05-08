@@ -1,0 +1,32 @@
+{
+    "name": "fwolf/rav",
+    "type": "library",
+    "description": "Router - Action - View",
+    "keywords": [
+        "action",
+        "library",
+        "mvc",
+        "router",
+        "view"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fwolf",
+            "email": "fwolf.aide+rav.php@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fwolf\\Rav\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FwolfTest\\Rav\\": "tests/"
+        }
+    }
+}
