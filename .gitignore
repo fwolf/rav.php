@@ -3,4 +3,5 @@
 /coverage-html/
 /vendor/
 
-phpunit.xml
+/composer.lock
+/phpunit.xml
