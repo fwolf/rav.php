@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<phpunit
+  backupGlobals='false'
+  backupStaticAttributes='false'
+  beStrictAboutOutputDuringTests='true'
+  beStrictAboutTestsThatDoNotTestAnything='true'
+  bootstrap='vendor/autoload.php'
+  colors='true'
+  convertErrorsToExceptions='true'
+  convertNoticesToExceptions='true'
+  convertWarningsToExceptions='true'
+  forceCoversAnnotation='false'
+  processIsolation='false'
+  stopOnError='false'
+  stopOnFailure='false'
+  stopOnIncomplete='false'
+  stopOnSkipped='false'
+  stopOnRisky="false"
+  timeoutForSmallTests='10'
+  timeoutForMediumTests='30'
+  timeoutForLargeTests='60'
+  verbose='false'
+>
+
+  <testsuites>
+    <testsuite name='Test Suite'>
+      <directory phpVersion='7.2' phpVersionOperator='>='
+        >tests/</directory>
+    </testsuite>
+  </testsuites>
+
+  <groups>
+    <exclude>
+      <group>benchmark</group>
+      <group>selenium</group>
+    </exclude>
+  </groups>
+
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist='true'>
+      <directory>src/</directory>
+    </whitelist>
+  </filter>
+
+  <php>
+    <ini name='memory_limit' value='300m' />
+  </php>
+
+</phpunit>
