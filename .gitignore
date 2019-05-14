@@ -4,5 +4,6 @@
 /vendor/
 
 /.phpunit.result.cache
+/bin/phpunit
 /composer.lock
 /phpunit.xml
