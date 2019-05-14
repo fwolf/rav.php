@@ -3,7 +3,6 @@
 namespace FwolfTest\Rav\Request;
 
 use Fwolf\Rav\Request\Request;
-use Fwolf\Rav\Request\RequestTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -11,11 +10,11 @@ use PHPUnit\Framework\TestCase;
  * @copyright   Copyright 2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
-class RequestTraitTest extends TestCase
+class RequestTest extends TestCase
 {
     /**
      * @param string[] $methods
-     * @return  MockObject | RequestTrait
+     * @return  MockObject | Request
      */
     protected function buildMock(array $methods = null): MockObject
     {
