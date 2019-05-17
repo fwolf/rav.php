@@ -7,7 +7,7 @@ namespace Fwolf\Rav\Request;
  *
  * {@inheritDoc}
  *
- * @copyright   Copyright 2019 Fwolf
+ * @copyright   Copyright 2015-2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
 interface HttpRequestInterface extends RequestInterface
@@ -16,10 +16,4 @@ interface HttpRequestInterface extends RequestInterface
 
 
     public function getModuleParameter(): string;
-
-
-    public function setActionParameter(string $param): self;
-
-
-    public function setModuleParameter(string $param): self;
 }
