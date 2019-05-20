@@ -2,7 +2,7 @@
 
 namespace Fwolf\Rav\View;
 
-use Fwolf\Rav\View\Exception\DataKeyNotFoundException;
+use Fwolf\Rav\View\Exception\ViewDataKeyNotFoundException;
 
 /**
  * Data carrier, from action to view
@@ -13,7 +13,7 @@ use Fwolf\Rav\View\Exception\DataKeyNotFoundException;
  * @copyright   Copyright 2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
-class DataDto
+class ViewDto
 {
     /**
      * @var array
@@ -23,12 +23,12 @@ class DataDto
 
     /**
      * @return  mixed
-     * @throws  DataKeyNotFoundException
+     * @throws  ViewDataKeyNotFoundException
      */
     public function get(string $key)
     {
         if (!array_key_exists($key, $this->data)) {
-            throw new DataKeyNotFoundException(
+            throw new ViewDataKeyNotFoundException(
                 "Data key $key not found"
             );
         }

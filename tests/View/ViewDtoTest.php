@@ -2,8 +2,8 @@
 
 namespace FwolfTest\Rav\View;
 
-use Fwolf\Rav\View\DataDto;
-use Fwolf\Rav\View\Exception\DataKeyNotFoundException;
+use Fwolf\Rav\View\ViewDto;
+use Fwolf\Rav\View\Exception\ViewDataKeyNotFoundException;
 use Fwolf\Wrapper\PHPUnit\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -11,15 +11,15 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @copyright   Copyright 2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
-class DataDtoTest extends TestCase
+class ViewDtoTest extends TestCase
 {
     /**
      * @param string[] $methods
-     * @return  MockObject | DataDto
+     * @return  MockObject | ViewDto
      */
     protected function buildMock(array $methods = null): MockObject
     {
-        $mock = $this->getMockBuilder(DataDto::class)
+        $mock = $this->getMockBuilder(ViewDto::class)
             ->setMethods($methods)
             ->getMock()
         ;
@@ -41,7 +41,7 @@ class DataDtoTest extends TestCase
     {
         $mock = $this->buildMock();
 
-        $this->expectException(DataKeyNotFoundException::class);
+        $this->expectException(ViewDataKeyNotFoundException::class);
 
         $mock->get('notExistKey');
     }
