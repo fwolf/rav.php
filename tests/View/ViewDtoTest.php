@@ -34,14 +34,6 @@ class ViewDtoTest extends TestCase
 
         $mock->set('foo', 'bar');
         $this->assertEquals('bar', $mock->get('foo'));
-
-        $mock->setHeaders('foo', 'bar');
-        $this->assertEquals('bar', $mock->getHeader('foo'));
-
-        $this->assertNull($mock->getHeader('not-exist-key'));
-
-        $mock->setMimeHeader('text/html');
-        $this->assertEquals('text/html', $mock->getMimeHeader());
     }
 
 
@@ -52,5 +44,31 @@ class ViewDtoTest extends TestCase
         $this->expectException(ViewDataKeyNotFoundException::class);
 
         $mock->get('notExistKey');
+    }
+
+
+    public function testHeaderAccessors()
+    {
+        $mock = $this->buildMock();
+
+        $mock->setHeaders(['dummy']);
+        $this->assertSame(['dummy'], $mock->getHeaders());
+
+        $mock->setHeader('foo', 'bar');
+        $this->assertSame(['bar'], $mock->getHeader('foo'));
+
+        $mock->setHeader('foo', 'bar', false);
+        $this->assertSame(['bar', false], $mock->getHeader('foo'));
+
+        $mock->setHeader('foo', 'bar', true, 404);
+        $this->assertSame(['bar', true, 404], $mock->getHeader('foo'));
+
+        $this->assertEmpty($mock->getHeader('not-exist-key'));
+
+        $mock->setContentTypeHeader('text/html');
+        $this->assertEquals(
+            'Content-Type: text/html',
+            $mock->getContentTypeHeader()
+        );
     }
 }

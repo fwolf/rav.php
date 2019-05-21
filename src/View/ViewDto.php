@@ -15,7 +15,7 @@ use Fwolf\Rav\View\Exception\ViewDataKeyNotFoundException;
  */
 class ViewDto
 {
-    const KEY_HEADER_MIME = 'mime';
+    const KEY_HEADER_CONTENT_TYPE = 'contentType';
 
 
     /**
@@ -25,7 +25,10 @@ class ViewDto
 
 
     /**
-     * @var array
+     * One header contains 3 part: header, replace, responseCode.
+     * Header setter should make sure each row is an array, at lease 1 item.
+     *
+     * @var array of array
      */
     protected $headers = [];
 
@@ -46,19 +49,31 @@ class ViewDto
     }
 
 
-    public function getHeader(string $key): ?string
+    public function getContentTypeHeader(): ?string
+    {
+        $header = $this->getHeader(self::KEY_HEADER_CONTENT_TYPE);
+
+        return (is_null($header)) ? null
+            : array_shift($header);
+    }
+
+
+    /**
+     * Getter of a header row
+     */
+    public function getHeader(string $key): array
     {
         if (array_key_exists($key, $this->headers)) {
             return $this->headers[$key];
         }
 
-        return null;
+        return [];
     }
 
 
-    public function getMimeHeader(): ?string
+    public function getHeaders(): array
     {
-        return $this->getHeader(self::KEY_HEADER_MIME);
+        return $this->headers;
     }
 
 
@@ -73,17 +88,41 @@ class ViewDto
     }
 
 
-    public function setHeaders(string $key, string $val): self
+    public function setContentTypeHeader(string $mime): self
     {
-        $this->headers[$key] = $val;
+        $this->setHeader(
+            self::KEY_HEADER_CONTENT_TYPE,
+            "Content-Type: $mime"
+        );
 
         return $this;
     }
 
 
-    public function setMimeHeader(string $mime): self
+    /**
+     * @param array $args Param $replace and $httpResponseCode of header()
+     */
+    public function setHeader(string $key, string $val, ...$args): self
     {
-        $this->headers[self::KEY_HEADER_MIME] = $mime;
+        $header = [$val];
+
+        // Max accept 3 param include $val
+        if (0 < count($args)) {
+            $header[] = array_shift($args);
+        }
+        if (0 < count($args)) {
+            $header[] = array_shift($args);
+        }
+
+        $this->headers[$key] = $header;
+
+        return $this;
+    }
+
+
+    public function setHeaders(array $headers): self
+    {
+        $this->headers = $headers;
 
         return $this;
     }
