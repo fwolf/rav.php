@@ -2,8 +2,8 @@
 
 namespace FwolfTest\Rav\View;
 
-use Fwolf\Rav\View\ViewDto;
 use Fwolf\Rav\View\Exception\ViewDataKeyNotFoundException;
+use Fwolf\Rav\View\ViewDto;
 use Fwolf\Wrapper\PHPUnit\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -34,6 +34,14 @@ class ViewDtoTest extends TestCase
 
         $mock->set('foo', 'bar');
         $this->assertEquals('bar', $mock->get('foo'));
+
+        $mock->setHeaders('foo', 'bar');
+        $this->assertEquals('bar', $mock->getHeader('foo'));
+
+        $this->assertNull($mock->getHeader('not-exist-key'));
+
+        $mock->setMimeHeader('text/html');
+        $this->assertEquals('text/html', $mock->getMimeHeader());
     }
 
 
