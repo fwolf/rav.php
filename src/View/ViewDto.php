@@ -5,10 +5,15 @@ namespace Fwolf\Rav\View;
 use Fwolf\Rav\View\Exception\ViewDataKeyNotFoundException;
 
 /**
- * Data carrier, from action to view
+ * Data carrier,
  *
- * Data is organized by key, defined by const in Action. As view can be
- * simplify and Action is always various, so put const in Action.
+ * Usually data are generated when Action process, and then transfer to View.
+ *
+ * Key constant of data is defined in Action, as view can be simplify to class
+ * name only and Action is always various.
+ *
+ * Key constant of headers are defined here, Action can call helper method to
+ * change headers.
  *
  * @copyright   Copyright 2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
