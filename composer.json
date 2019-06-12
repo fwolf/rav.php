@@ -21,7 +21,7 @@
         "fwlib/fwlib": "dev-master#efa2232"
     },
     "require-dev": {
-        "fwolf/phpunit-wrapper": "2.0"
+        "fwolf/phpunit-wrapper": "^2.0"
     },
     "autoload": {
         "psr-4": {
