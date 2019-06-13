@@ -13,13 +13,35 @@ abstract class AbstractView implements ViewInterface
      */
     protected $dto = null;
 
+    /**
+     * Title of View
+     *
+     * @var string
+     */
+    protected $title = '';
 
+
+    /**
+     * @inheritDoc
+     */
     public function getDto(): ?ViewDto
     {
         return $this->dto;
     }
 
 
+    /**
+     * @inheritDoc
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
     public function output(): ViewInterface
     {
         echo $this->getOutput();
@@ -28,9 +50,23 @@ abstract class AbstractView implements ViewInterface
     }
 
 
-    public function setDto(ViewDto $dto): ViewInterface
+    /**
+     * @inheritDoc
+     */
+    public function setDto(ViewDto $dto)
     {
         $this->dto = $dto;
+
+        return $this;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
 
         return $this;
     }

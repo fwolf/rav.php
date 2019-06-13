@@ -35,6 +35,9 @@ class AbstractViewTest extends TestCase
             ->getMockForAbstractClass()
         ;
 
+        $mock->setTitle('dummy title');
+        $this->assertEquals('dummy title', $mock->getTitle());
+
         $dto = $mock->getDto();
         $this->assertNull($dto);
         $dto = new ViewDto();
