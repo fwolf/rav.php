@@ -19,6 +19,12 @@ interface ViewInterface
 
 
     /**
+     * Getter of View template file name
+     */
+    public function getTemplate(): string;
+
+
+    /**
      * Getter of View title
      */
     public function getTitle(): string;
@@ -33,6 +39,14 @@ interface ViewInterface
      * @return  self
      */
     public function output();
+
+
+    /**
+     * Setter of View template file name
+     *
+     * @return  self
+     */
+    public function setTemplate(string $tplFileName);
 
 
     /**

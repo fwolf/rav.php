@@ -11,11 +11,24 @@ abstract class AbstractView implements ViewInterface
     use ViewDtoAwareTrait;
 
     /**
+     * Template file path
+     *
+     * @var string
+     */
+    protected $template = '';
+
+    /**
      * Title of View
      *
      * @var string
      */
     protected $title = '';
+
+
+    public function getTemplate(): string
+    {
+        return $this->template;
+    }
 
 
     /**
@@ -33,6 +46,17 @@ abstract class AbstractView implements ViewInterface
     public function output()
     {
         echo $this->getOutput();
+
+        return $this;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function setTemplate(string $tplFileName)
+    {
+        $this->template = $tplFileName;
 
         return $this;
     }

@@ -42,6 +42,9 @@ class AbstractViewTest extends TestCase
         $this->assertTrue($dto->isEmpty());
         $mock->setViewDto($dto);
         $this->assertInstanceOf(ViewDto::class, $mock->getViewDto());
+
+        $mock->setTemplate('dummy template');
+        $this->assertEquals('dummy template', $mock->getTemplate());
     }
 
 
