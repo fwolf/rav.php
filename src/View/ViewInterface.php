@@ -12,9 +12,6 @@ namespace Fwolf\Rav\View;
  */
 interface ViewInterface
 {
-    public function getDto(): ?ViewDto;
-
-
     /**
      * Generate output content
      */
@@ -27,6 +24,9 @@ interface ViewInterface
     public function getTitle(): string;
 
 
+    public function getViewDto(): ?ViewDto;
+
+
     /**
      * Output content
      *
@@ -36,15 +36,15 @@ interface ViewInterface
 
 
     /**
-     * @return  self
-     */
-    public function setDto(ViewDto $dto);
-
-
-    /**
      * Setter of View title
      *
      * @return  self
      */
     public function setTitle(string $title);
+
+
+    /**
+     * @return  self
+     */
+    public function setViewDto(ViewDto $viewDto);
 }

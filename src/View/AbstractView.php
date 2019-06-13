@@ -8,10 +8,7 @@ namespace Fwolf\Rav\View;
  */
 abstract class AbstractView implements ViewInterface
 {
-    /**
-     * @var ViewDto
-     */
-    protected $dto = null;
+    use ViewDtoAwareTrait;
 
     /**
      * Title of View
@@ -19,15 +16,6 @@ abstract class AbstractView implements ViewInterface
      * @var string
      */
     protected $title = '';
-
-
-    /**
-     * @inheritDoc
-     */
-    public function getDto(): ?ViewDto
-    {
-        return $this->dto;
-    }
 
 
     /**
@@ -42,20 +30,9 @@ abstract class AbstractView implements ViewInterface
     /**
      * @inheritDoc
      */
-    public function output(): ViewInterface
+    public function output()
     {
         echo $this->getOutput();
-
-        return $this;
-    }
-
-
-    /**
-     * @inheritDoc
-     */
-    public function setDto(ViewDto $dto)
-    {
-        $this->dto = $dto;
 
         return $this;
     }
