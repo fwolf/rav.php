@@ -39,6 +39,14 @@ class ViewDto
 
 
     /**
+     * If this DTO is empty and contains no data & header
+     *
+     * @var bool
+     */
+    protected $isEmpty = true;
+
+
+    /**
      * @return  mixed
      * @throws  ViewDataKeyNotFoundException
      */
@@ -82,11 +90,19 @@ class ViewDto
     }
 
 
+    public function isEmpty(): bool
+    {
+        return $this->isEmpty;
+    }
+
+
     /**
      * @param mixed $val
      */
     public function set(string $key, $val): self
     {
+        $this->setIsNotEmpty();
+
         $this->data[$key] = $val;
 
         return $this;
@@ -109,6 +125,8 @@ class ViewDto
      */
     public function setHeader(string $key, string $val, ...$args): self
     {
+        $this->setIsNotEmpty();
+
         $header = [$val];
 
         // Max accept 3 param include $val
@@ -127,7 +145,17 @@ class ViewDto
 
     public function setHeaders(array $headers): self
     {
+        $this->setIsNotEmpty();
+
         $this->headers = $headers;
+
+        return $this;
+    }
+
+
+    protected function setIsNotEmpty(): self
+    {
+        $this->isEmpty = false;
 
         return $this;
     }

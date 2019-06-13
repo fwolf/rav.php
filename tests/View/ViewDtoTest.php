@@ -32,8 +32,10 @@ class ViewDtoTest extends TestCase
     {
         $mock = $this->buildMock();
 
+        $this->assertTrue($mock->isEmpty());
         $mock->set('foo', 'bar');
         $this->assertEquals('bar', $mock->get('foo'));
+        $this->assertFalse($mock->isEmpty());
     }
 
 
@@ -50,6 +52,8 @@ class ViewDtoTest extends TestCase
     public function testHeaderAccessors()
     {
         $mock = $this->buildMock();
+
+        $this->assertTrue($mock->isEmpty());
 
         $mock->setHeaders(['dummy']);
         $this->assertSame(['dummy'], $mock->getHeaders());
@@ -70,5 +74,7 @@ class ViewDtoTest extends TestCase
             'Content-Type: text/html',
             $mock->getContentTypeHeader()
         );
+
+        $this->assertFalse($mock->isEmpty());
     }
 }
