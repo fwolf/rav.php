@@ -18,14 +18,35 @@ use Fwolf\Rav\Request\RequestInterface;
  */
 interface ActionInterface
 {
+    public function getRequest(): RequestInterface;
+
+
+    /**
+     * Use view to output
+     *
+     * @return  self
+     */
     public function output();
 
 
     /**
      * Main logic process
+     *
+     * @return  self
      */
     public function process();
 
 
-    public function setRequest(RequestInterface $request): self;
+    /**
+     * @return  self
+     */
+    public function setRequest(RequestInterface $request);
+
+
+    /**
+     * Main entrance, connect process and output
+     *
+     * @return  self
+     */
+    public function start();
 }
