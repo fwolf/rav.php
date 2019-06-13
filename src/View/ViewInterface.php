@@ -23,9 +23,14 @@ interface ViewInterface
 
     /**
      * Output content
+     *
+     * @return  self
      */
-    public function output(): self;
+    public function output();
 
 
-    public function setDto(ViewDto $dto): self;
+    /**
+     * @return  self
+     */
+    public function setDto(ViewDto $dto);
 }

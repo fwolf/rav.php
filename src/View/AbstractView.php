@@ -11,12 +11,12 @@ abstract class AbstractView implements ViewInterface
     /**
      * @var ViewDto
      */
-    protected $viewDto = null;
+    protected $dto = null;
 
 
     public function getDto(): ?ViewDto
     {
-        return $this->viewDto;
+        return $this->dto;
     }
 
 
@@ -28,9 +28,9 @@ abstract class AbstractView implements ViewInterface
     }
 
 
-    public function setDto(ViewDto $viewDto): ViewInterface
+    public function setDto(ViewDto $dto): ViewInterface
     {
-        $this->viewDto = $viewDto;
+        $this->dto = $dto;
 
         return $this;
     }
