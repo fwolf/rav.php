@@ -25,7 +25,7 @@ interface ActionFinderInterface
 
 
     /**
-     * Namespace which Action start with
+     * Namespace which Action start with, should end with '\\'
      *
      * @return  self
      */
