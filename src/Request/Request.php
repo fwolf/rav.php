@@ -16,18 +16,36 @@ class Request implements RequestInterface
     /**
      * @var string
      */
+    protected $defaultAction = 'defaultAction';
+
+    /**
+     * @var string
+     */
+    protected $defaultModule = 'defaultModule';
+
+    /**
+     * @var string
+     */
     protected $module = null;
 
 
     public function getAction(): string
     {
-        return empty($this->action) ? '' : $this->action;
+        if (is_null($this->action) && !empty($this->defaultAction)) {
+            return $this->defaultAction;
+        } else {
+            return $this->action;
+        }
     }
 
 
     public function getModule(): string
     {
-        return empty($this->module) ? '' : $this->module;
+        if (is_null($this->module) && !empty($this->defaultModule)) {
+            return $this->defaultModule;
+        } else {
+            return $this->module;
+        }
     }
 
 

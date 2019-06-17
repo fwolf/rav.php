@@ -31,9 +31,11 @@ class RequestTest extends TestCase
     {
         $mock = $this->buildMock();
 
+        $this->assertEquals('defaultAction', $mock->getAction());
         $mock->setAction('dummyAction');
         $this->assertEquals('dummyAction', $mock->getAction());
 
+        $this->assertEquals('defaultModule', $mock->getModule());
         $mock->setModule('dummyModule');
         $this->assertEquals('dummyModule', $mock->getModule());
     }
