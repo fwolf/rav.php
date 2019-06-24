@@ -3,9 +3,9 @@
 namespace FwolfTest\Rav\Router;
 
 use Fwolf\Rav\Request\Request;
-use Fwolf\Rav\Router\ActionFinderByNamespace;
 use Fwolf\Rav\Router\Exception\ActionNotFoundException;
 use Fwolf\Rav\Router\Exception\ModuleOrActionEmptyException;
+use Fwolf\Rav\Router\RouterByNameSpace;
 use Fwolf\Wrapper\PHPUnit\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -13,15 +13,15 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @copyright   Copyright 2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
-class ActionFinderByNamespaceTest extends TestCase
+class RouterByNamespaceTest extends TestCase
 {
     /**
      * @param string[] $methods
-     * @return  MockObject | ActionFinderByNamespace
+     * @return  MockObject | RouterByNameSpace
      */
     protected function buildMock(array $methods = null): MockObject
     {
-        $mock = $this->getMockBuilder(ActionFinderByNamespace::class)
+        $mock = $this->getMockBuilder(RouterByNameSpace::class)
             ->setMethods($methods)
             ->getMock()
         ;
@@ -34,7 +34,7 @@ class ActionFinderByNamespaceTest extends TestCase
     {
         $request = (new Request())
             ->setModule('router')
-            ->setAction('action-finder-by-namespace-test')
+            ->setAction('router-by-namespace-test')
         ;
 
         $mock = $this->buildMock();
@@ -42,14 +42,14 @@ class ActionFinderByNamespaceTest extends TestCase
             ->setNamespacePrefix('FwolfTest\\Rav\\')
         ;
         $this->assertEquals(
-            ActionFinderByNamespaceTest::class,
+            RouterByNamespaceTest::class,
             $mock->getActionClass()
         );
 
-        $request->setAction('actionFinderByNamespaceTest');
+        $request->setAction('routerByNamespaceTest');
         $mock->setRequest($request);
         $this->assertEquals(
-            ActionFinderByNamespaceTest::class,
+            RouterByNamespaceTest::class,
             $mock->getActionClass()
         );
     }

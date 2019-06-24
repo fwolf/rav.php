@@ -5,12 +5,14 @@ namespace Fwolf\Rav\Router;
 use Fwolf\Rav\Request\RequestInterface;
 
 /**
- * Find Action class to use
+ * Router
+ *
+ * Find Action class to use.
  *
  * @copyright   Copyright 2015-2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
-interface ActionFinderInterface
+interface RouterInterface
 {
     /**
      * Get result Action class

@@ -2,7 +2,7 @@
 
 namespace FwolfTest\Rav\Router;
 
-use Fwolf\Rav\Router\AbstractActionFinder;
+use Fwolf\Rav\Router\AbstractRouter;
 use Fwolf\Wrapper\PHPUnit\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -10,15 +10,15 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @copyright   Copyright 2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
-class AbstractActionFinderTest extends TestCase
+class AbstractRouterTest extends TestCase
 {
     /**
      * @param string[] $methods
-     * @return  MockObject | AbstractActionFinder
+     * @return  MockObject | AbstractRouter
      */
     protected function buildMock(array $methods = []): MockObject
     {
-        $mock = $this->getMockBuilder(AbstractActionFinder::class)
+        $mock = $this->getMockBuilder(AbstractRouter::class)
             ->setMethods($methods)
             ->getMockForAbstractClass()
         ;

@@ -12,7 +12,7 @@ use Fwolf\Rav\Router\Exception\ModuleOrActionEmptyException;
  * @copyright   Copyright 2015-2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
-class ActionFinderByNameSpace extends AbstractActionFinder
+class RouterByNameSpace extends AbstractRouter
 {
     /**
      * @inheritDoc

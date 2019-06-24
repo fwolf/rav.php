@@ -10,7 +10,7 @@ use Fwolf\Rav\Request\RequestAwareTrait;
  * @copyright   Copyright 2015-2019 Fwolf
  * @license     https://opensource.org/licenses/MIT MIT
  */
-abstract class AbstractActionFinder implements ActionFinderInterface
+abstract class AbstractRouter implements RouterInterface
 {
     use RequestAwareTrait;
 
